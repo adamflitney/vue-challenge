@@ -1,34 +1,10 @@
-# employee-dashboard
+# Employee Dashboard Challenge
 
-## Project setup
-```
-npm install
-```
+## Requirements
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* One page, two sections
+* Left side list all employees
+* Font size relative to popularity in data
+* Clicking on a person in the list shows a view of their details and highlights people they have worked with in the employee list
+* Must match design as closely as possible
+* Must be responsive to different desktop sizes
