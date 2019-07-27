@@ -3,8 +3,15 @@
     <div class="background"></div>
     <img src="@/assets/images/header/godfather-header.jpg" alt="header image" />
     <div class="components-grid">
-      <employee-list />
-      <employee-detail />
+      <employee-list
+        :employees="employeeData"
+        :selected="selectedEmployee"
+        @selectEmployee="handleEmployeeSelected"
+      />
+      <employee-detail
+        :employee="selectedEmployee"
+        @changePopularity="updateEmployeePopularity"
+      />
     </div>
   </div>
 </template>
@@ -21,12 +28,29 @@ export default {
   },
   data() {
     return {
-      employeeData: []
+      employeeData: [],
+      selectedEmployee: {}
     };
+  },
+  methods: {
+    handleEmployeeSelected(employeeName) {
+      this.selectedEmployee = this.employeeData.filter(
+        employee => employee.name === employeeName
+      )[0];
+    },
+    updateEmployeePopularity(passedEmployee) {
+      console.log("update employee popularity", passedEmployee);
+      this.employeeData[
+        this.employeeData.findIndex(
+          employee => employee.name === passedEmployee.name
+        )
+      ].popularity = passedEmployee.popularity;
+    }
   },
   mounted() {
     this.employeeData = getEmployeeData().employees;
     console.log(this.employeeData);
+    this.selectedEmployee = this.employeeData[0];
   }
 };
 </script>

@@ -2,46 +2,59 @@
   <div class="employee-detail">
     <div class="profile-grid">
       <img
-        src="@/assets/images/profile-pics/vito-corleone.jpg"
-        alt="profile picture"
+        :src="getImgUrl(employee.image)"
+        alt="profile
+      picture"
         class="profile-image"
       />
 
       <div class="employee-popularity">
-        <h1 class="employee-name">Vito Corleone</h1>
+        <h1 class="employee-name">{{ employee.name }}</h1>
         <div class="popularity">
           <span>Popularity</span>
           <input
             type="range"
             min="1"
             max="5"
-            value="2"
             class="slider"
-            id="myRange"
+            v-model="employee.popularity"
+            @change="popularityChanged"
           />
         </div>
       </div>
       <div class="biography">
         <h3>Biography</h3>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-        quaerat reiciendis magnam, maiores molestias cumque fugiat placeat
-        consequatur eum magni eligendi sint aliquid minus fuga porro iusto qui
-        voluptas nulla? Voluptas sint cum veniam laboriosam deserunt. Modi
-        dolorem neque nihil quaerat eius deleniti, illum rerum commodi et quod
-        perspiciatis delectus? Id blanditiis laudantium dicta ad. Voluptas
-        doloribus possimus quis! Quasi deserunt blanditiis similique animi modi
-        sit tempora incidunt vitae, sequi illum. Exercitationem voluptates fuga
-        maiores adipisci nihil. Magni hic laboriosam assumenda asperiores vero
-        consequuntur esse numquam repellat illum obcaecati porro reiciendis
-        eveniet explicabo aperiam repudiandae tempora atque, doloremque,
-        corrupti architecto.
+        {{ employee.biography }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    employee: {
+      type: Object,
+      required: true
+    }
+  },
+  data() {
+    return {
+      sliderVal: this.employee.popularity
+    };
+  },
+  methods: {
+    popularityChanged() {
+      this.$emit("changePopularity", {
+        ...this.employee,
+        popularity: this.employee.popularity
+      });
+    },
+    getImgUrl(pic) {
+      return require("@/assets/images/profile-pics/" + pic);
+    }
+  }
+};
 </script>
 
 <style scoped>

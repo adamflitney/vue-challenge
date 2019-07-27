@@ -2,18 +2,43 @@
   <div class="employee-list">
     <img src="@/assets/the-godfather.svg" alt="godfather logo" />
     <ul>
-      <li>Name 1</li>
-      <li>Name 2</li>
-      <li>Name 3</li>
-      <li>Name 4</li>
-      <li>Name 5</li>
-      <li>Name 6</li>
+      <li
+        v-for="employee in employees"
+        :key="employee.name"
+        :class="{ selected: isSelected(employee.name) }"
+        @click="selectEmployee(employee.name)"
+      >
+        {{ employee.name }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    employees: {
+      type: Array,
+      required: true
+    },
+    selected: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    isSelected(employeeName) {
+      if (employeeName === this.selected.name) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    selectEmployee(employeeName) {
+      this.$emit("selectEmployee", employeeName);
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -39,5 +64,13 @@ ul {
   flex-direction: column;
   text-align: center;
   color: white;
+}
+
+li {
+  padding: 0.5rem;
+}
+li:hover,
+li.selected {
+  background-color: #404146;
 }
 </style>
