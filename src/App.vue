@@ -14,4 +14,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@font-face {
+  font-family: "RobotoLight";
+  src: url("/assets/fonts/Roboto-Light.ttf") format("truetype");
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "RobotoLight", sans-serif;
+}
+</style>

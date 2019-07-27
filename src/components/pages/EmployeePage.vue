@@ -1,7 +1,11 @@
 <template>
   <div class="employee-page">
-    <employee-list />
-    <employee-detail />
+    <div class="background"></div>
+    <img src="@/assets/images/header/godfather-header.jpg" alt="header image" />
+    <div class="components-grid">
+      <employee-list />
+      <employee-detail />
+    </div>
   </div>
 </template>
 
@@ -27,4 +31,35 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.employee-page {
+  height: 100%;
+  width: 100%;
+  /* background-color: #2e2e36; */
+}
+
+.background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #2e2e36;
+  z-index: -2;
+}
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 35vh;
+  width: 100vw;
+  object-fit: none;
+  z-index: -1;
+}
+
+.components-grid {
+  display: grid;
+  grid-template-columns: 26vw 1fr;
+}
+</style>
