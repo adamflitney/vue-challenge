@@ -5,8 +5,12 @@
       <li
         v-for="employee in employees"
         :key="employee.name"
-        :class="{ selected: isSelected(employee.name) }"
+        :class="{
+          selected: isSelected(employee.name),
+          colleague: isColleague(employee.name)
+        }"
         @click="selectEmployee(employee.name)"
+        :style="{ fontSize: 1 + employee.popularity / 2 + 'rem' }"
       >
         {{ employee.name }}
       </li>
@@ -33,6 +37,11 @@ export default {
       } else {
         return false;
       }
+    },
+    isColleague(employeeName) {
+      return this.selected.colleagues.find(colleague => {
+        return colleague === employeeName;
+      });
     },
     selectEmployee(employeeName) {
       this.$emit("selectEmployee", employeeName);
@@ -68,9 +77,15 @@ ul {
 
 li {
   padding: 0.5rem;
+  user-select: none;
 }
 li:hover,
 li.selected {
   background-color: #404146;
+}
+
+li.selected,
+li.colleague {
+  color: #3dd2fa;
 }
 </style>

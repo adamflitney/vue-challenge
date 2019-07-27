@@ -58,16 +58,23 @@ export default {
 </script>
 
 <style scoped>
+.employee-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .profile-grid {
-  height: 100vh;
+  /* max-height: 80%;
   margin-top: 20%;
-  margin-right: 5%;
+  margin-right: 5%; */
+  padding: 0 7rem;
+  padding-top: 10rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 2fr 2fr 2fr 1fr;
+  grid-row-gap: 2rem;
   grid-template-areas:
     "p pop pop pop"
-    ". bio bio bio"
     ". bio bio bio"
     ". bio bio bio";
   justify-items: center;
@@ -77,7 +84,7 @@ export default {
 .profile-image {
   padding: 0 auto;
   grid-area: p;
-  max-height: 90%;
+  height: 10vw;
   border: 2px solid #5a595e;
   border-radius: 3.5%;
 }
