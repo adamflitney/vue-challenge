@@ -63,6 +63,7 @@ img {
   height: 13vw;
   width: 13vw;
   margin: 0 auto;
+  margin-top: 3rem;
   justify-self: flex-start;
 }
 
