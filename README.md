@@ -37,4 +37,10 @@
 ### Other Files
 #### EmployeeDataAPI
 Handles loading the data from the API which in this case is a json file
+
+## Installation Instructions
+
+1. Clone this repo
+2. Run `npm install`
+3. Run `npm serve` to run a local instance of the project.
   
